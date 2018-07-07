@@ -1,1 +1,1 @@
-Le classique todo list (WIP)
+Le classique todo list on React + Redux (WIP)
