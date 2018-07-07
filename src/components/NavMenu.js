@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
-import { Button, Input, Form, Icon, Menu, Segment, Sticky} from 'semantic-ui-react'
+import { Icon, Menu } from 'semantic-ui-react'
 
 const NavMenu = ({sortAsc, deleteAllCheckedTasks,toggleSortAsc}) => {
   return (

@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
-import { Popup, Tab, Select, Button, Label, Icon, Header, Container, Segment } from 'semantic-ui-react'
+import { Popup, Tab, Button, Label, Icon, Container } from 'semantic-ui-react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc'
+import { SortableContainer, SortableElement } from 'react-sortable-hoc'
 
 import TaskContainer from '../../containers/TaskContainer'
-import {sortType} from '../../sort'
 
 const SortableItem = SortableElement(({taskData}) =>
   <TaskContainer taskData={taskData}/> 
 );
 
 const SortableList = SortableContainer(({items, title, collectionNumber, checkTask, deleteTasks, sortTasks, selectTasks}) => {
-  let values = Object.values(sortType).reduce((arr, value) => {
-    return [...arr, {value, text:value}]
-  }, []);
   let pane1 =     
   <Tab.Pane inverted>
     <Button as='div' labelPosition='right' onClick={e => sortTasks('date', true)}>
@@ -92,7 +88,7 @@ class SubList extends Component {
     this.props.deleteAndChangeTasks(this.props.index);
   }
   render(){
-    let {subList, index, onSortEnd, checkTask, deleteTask} = this.props;
+    let {subList, index, onSortEnd, checkTask } = this.props;
     return (
       <SortableList collectionNumber={index}
         lock='y' distance={2} items={subList.tasks} title={subList.title}

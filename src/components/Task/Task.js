@@ -1,10 +1,9 @@
-import React, {Component } from 'react';
-import { Rating, Item, Transition, Button, Icon, TextArea, Input, Form, Container } from 'semantic-ui-react'
+import React from 'react';
+import { Rating, Button, Icon, Container } from 'semantic-ui-react'
 import {getFormatedDate} from '../../dateTime';
-import dateformat from 'dateformat'
 
 const Task = (props) => {
-  let {priority, caption, isChecked, startDate, endDate} = props.taskData;
+  let {priority, caption, isChecked, endDate} = props.taskData;
   let {editTask, deleteTask} = props;
   return (
     <div>

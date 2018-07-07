@@ -52,8 +52,8 @@ class TaskContainer extends Component{
   }
 
   render(){
-    let {id, caption, isChecked, startDate, endDate, priority} = this.props.taskData;
-    let {editTask, deleteTask, checkTask} = this.props;
+    let {id, isChecked} = this.props.taskData;
+    let {checkTask} = this.props;
     let {isEditable} = this.state;
     let classes = (isChecked) ? "list__task--is-checked":"list__task";
     classes += (isEditable) ? " list__task--is-editable":"";

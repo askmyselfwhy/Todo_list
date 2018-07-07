@@ -3,14 +3,8 @@ import {connect} from 'react-redux'
 import ListGrid from '../containers/ListGridContainer'
 import List from '../containers/ListContainer'
 import ErrorPage from './ErrorPage'
-import {Link} from 'react-router-dom'
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-
-import v4 from 'uuid';
-import getDateTime from '../dateTime';
-import action from '../actions/action_types';
-
 
 class App extends Component {
   render() {

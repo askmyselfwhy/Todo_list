@@ -1,9 +1,12 @@
 import React from 'react'
-
+import { Container, Header } from 'semantic-ui-react'
 
 const ErrorPage = () => {
   return (
-    <div>ERROR PAGE</div>
+    <Container textAlign='center'>
+      <Header as='h1'>Error page</Header>
+      <p>Something went wrong!</p>
+    </Container>
   )
 }
 

@@ -42,6 +42,7 @@ a {
   .lists-grid {
     grid-template-columns: minmax(25%, auto) minmax(25%, auto) minmax(25%, auto) minmax(25%, auto); } }
 .sublists-grid {
+  padding: 25px;
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
@@ -50,6 +51,13 @@ a {
 
 .sublist-controls {
   padding: 25px; }
+
+.task-form__grid {
+  display: grid !important;
+  grid-template: auto auto auto auto/minmax(25%, 35%) minmax(25%, 35%);
+  align-items: center;
+  justify-content: center;
+  grid-gap: 10px; }
 
 .lists-grid a {
   padding: 0px; }
@@ -184,14 +192,14 @@ a {
 
 .zoom-enter-active {
   transform: scale(1);
-  transition: transform 500ms ease-in; }
+  transition: 500ms ease-in; }
 
 .zoom-exit {
   transform: scale(1); }
 
 .zoom-exit-active {
   transform: scale(0.1);
-  transition: transform 500ms ease-in; }
+  transition: 500ms ease-in; }
 
 /* COLLAPSE */
 .collapse-enter {

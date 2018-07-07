@@ -1,5 +1,4 @@
 import action from '../actions/action_types';
-import {sortByDateASC, sortByDateDESC} from '../sort'
 
 const addNewTask = (list, taskData) => {
   return [...list.tasks, taskData]

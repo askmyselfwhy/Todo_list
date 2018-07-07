@@ -10,7 +10,7 @@ import AddTaskForm from '../AddTaskForm'
 import SubList from './SubList'
 
 import { sortByPriority, sortByDate } from '../../sort'
-import {getLastIndexOfOutdatedTasks, getOutdatedTasks, getTodayTasks, getTomorrowTasks, getWeekTasks, getOtherTasks, getDateTime, getFormatedDate } from '../../dateTime';
+import { getOutdatedTasks, getTodayTasks, getTomorrowTasks, getWeekTasks, getOtherTasks } from '../../dateTime';
 import config from '../../config';
 
 
@@ -129,7 +129,7 @@ class List extends Component {
   }
   render(){
     let {id} = this.state;
-    let {lists, addTask, deleteAllCheckedTasks,checkTask,deleteTask} = this.props;
+    let {lists, deleteAllCheckedTasks,checkTask,deleteTask} = this.props;
     let list = [...lists].find((item) => (item.id === id) ? true : false)
     if (!list) return <Redirect to="../*"></Redirect>
     let tasks = list.tasks
@@ -151,9 +151,9 @@ class List extends Component {
         </Container>
         <Container>
           {(this.state.showAddTaskPanel) ?
-          <Button icon='unhide' content='Hide panel' onClick={this.toggleAddTaskPanel}/>
+          <Button icon='unhide' content='Add task panel' onClick={this.toggleAddTaskPanel}/>
           :
-          <Button icon='hide' content='Show panel' onClick={this.toggleAddTaskPanel}/>
+          <Button icon='hide' content='Add task panel' onClick={this.toggleAddTaskPanel}/>
           }
           <CSSTransition key={list.id} timeout={500} unmountOnExit
             in={this.state.showAddTaskPanel} classNames="collapse">
