@@ -42,15 +42,15 @@ const SortableList = SortableContainer(({items, title, collectionNumber, checkTa
         <h1>{title}</h1>
       </Container>
       <Container fluid textAlign='right' className='sublist-controls'>
-        <Button.Group>
+        <Button.Group widths='4'>
           <Popup inverted flowing
-            trigger={<Button compact size='medium' icon><Icon name='sort' />Sort by</Button>}
+            trigger={<Button compact icon><Icon name='sort' />Sort by</Button>}
             on='click' hideOnScroll>
             <Tab menu={{fluid: true, secondary: true, inverted: true}} panes={panes}/>
           </Popup>
-          <Button compact size='medium' content='Select all'   onClick={e => selectTasks(true)}/>
-          <Button compact size='medium' content='Unselect all' onClick={e => selectTasks(false)}/>
-          <Button compact size='medium' content='Delete checked' onClick={e => deleteTasks()}
+          <Button compact content='Select all'   onClick={e => selectTasks(true)}/>
+          <Button compact content='Unselect all' onClick={e => selectTasks(false)}/>
+          <Button compact content='Delete checked' onClick={e => deleteTasks()}
             color='red'/>
         </Button.Group>
       </Container>
@@ -88,11 +88,12 @@ class SubList extends Component {
     this.props.deleteAndChangeTasks(this.props.index);
   }
   render(){
-    let {subList, index, onSortEnd, checkTask } = this.props;
+    let {subList, index, onSortStart, onSortEnd, checkTask } = this.props;
     return (
       <SortableList collectionNumber={index}
         lock='y' distance={2} items={subList.tasks} title={subList.title}
         onSortEnd={onSortEnd} checkTask={checkTask}
+        onSortStart={onSortStart}
         deleteTasks={this.deleteTasks} sortTasks={this.sortTasks} selectTasks={this.selectTasks}/>
     )
   }

@@ -52,6 +52,13 @@ a {
 .sublist-controls {
   padding: 25px; }
 
+@media only screen and (max-width: 560px) {
+  .sublists-grid {
+    padding: 10px;
+    margin-top: 35px; }
+
+  .sublist-controls {
+    padding: 5px; } }
 .task-form__grid {
   display: grid !important;
   grid-template: auto auto auto auto/minmax(25%, 35%) minmax(25%, 35%);
@@ -59,6 +66,13 @@ a {
   justify-content: center;
   grid-gap: 10px; }
 
+@media only screen and (max-width: 560px) {
+  .task-form__grid {
+    grid-gap: 5px;
+    grid-template: auto auto auto auto/50% 50%; } }
+@media only screen and (max-width: 400px) {
+  .task-form__grid {
+    grid-template-columns: 100%; } }
 .lists-grid a {
   padding: 0px; }
   .lists-grid a:hover {
@@ -114,10 +128,6 @@ a {
 .list {
   transition: 0.2s ease;
   opacity: 0; }
-  .list__panel-container {
-    margin: 0 auto;
-    max-width: 960px;
-    text-align: right; }
   .list__title {
     text-align: center; }
   .list__delete-button {
@@ -156,7 +166,7 @@ a {
     text-align: right; }
   .list__task-content {
     display: grid;
-    grid-template-columns: 1fr 1fr; }
+    grid-template-columns: 50% 50%; }
   .list__task--is-editable {
     border: 1px solid #7c2424;
     box-shadow: none; }
@@ -171,6 +181,9 @@ a {
       word-break: break-all;
       text-decoration: line-through; }
 
+@media only screen and (max-width: 560px) {
+  .list__task, .list__task--is-checked {
+    padding: 5px 10px; } }
 /* FADE */
 .fade-enter {
   opacity: 0.01; }

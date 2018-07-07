@@ -14,7 +14,7 @@
       text-align: right
     &-content
       display: grid
-      grid-template-columns: 1fr 1fr
+      grid-template-columns: 50% 50%
 
     &__dates
     &__time-exp
@@ -32,7 +32,6 @@
         background-color: rgb(124, 36, 36)
         color: #fff
 
-        
       .list__task__caption
         word-wrap: wrap
         word-break: break-all
@@ -40,4 +39,7 @@
 
     
 
-
+@media only screen and (max-width: 560px)
+  .list
+    &__task
+      padding: 5px 10px

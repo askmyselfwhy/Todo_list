@@ -38,6 +38,9 @@ class List extends Component {
     let tasks = this.concatSublistsTasks();
     this.props.changeTasks(tasks);
   };
+  onSortStart = ({oldIndex, newIndex, collection}, e) => {
+    e.preventDefault()
+  };
   concatSublistsTasks = () => {
     let tasks = [];
     for(let i = 0; i < this.subLists.length; i++)
@@ -168,7 +171,9 @@ class List extends Component {
           {this.subLists.map((sublist, index) => 
               (sublist.tasks.length > 0) ?
               <CSSTransition key={index+1} timeout={500} unmountOnExit classNames="fade">
-                <SubList index={index} subList={sublist} onSortEnd={this.onSortEnd}
+                <SubList index={index} subList={sublist} 
+                  onSortEnd={this.onSortEnd}
+                  onSortStart={this.onSortStart}
                   checkTask={checkTask} deleteTask={deleteTask}
                   sortAndChangeTasks={this.sortAndChangeTasks}
                   checkAndChangeTasks={this.checkAndChangeTasks}
