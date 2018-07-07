@@ -1,0 +1,78 @@
+@import '../utils/_vars.sass'
+
+.lists-grid
+  a
+    padding: 0px
+    &:hover
+      background-color: transparent
+
+
+  &__item
+    cursor: pointer
+    border: 1px solid transparent
+    background: $cList
+    box-shadow: 0 0 1px 0 #000
+    margin: 5px 5px
+    color: #000 !important
+    word-wrap: break-word
+    word-break: break-all
+    transition: .2s ease
+
+    a
+      display: block
+      padding: 10px 10px
+      color: #000
+      &:hover
+        background-color: transparent
+
+
+    &:hover
+      background: $cListHover
+      border: 1px solid rgb(0, 100, 160)
+
+    &__remove-button
+      display: inline-block
+      &:before
+        content: 'X'
+        padding: 10px 15px
+        margin: 0 auto
+        transition: .2s ease
+        float: right
+        
+      &:hover:before
+        background-color: #000
+        color: #fff
+
+        
+
+    &__title
+      text-align: center
+      padding: 10px
+      border: 1px dashed #000
+      text-transform: uppercase
+      
+    &--add
+      @extend .lists-grid__item
+      display: flex
+      justify-content: center
+      line-height: normal
+      color: #000
+
+      &:after
+        content: '+'
+        font-size: 250px
+
+
+    &__tasks
+      &__item
+        text-align: left
+        margin: 0px
+        padding: 5px
+
+
+  
+
+
+
+
+  

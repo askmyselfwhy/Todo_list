@@ -1,0 +1,32 @@
+.App {
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: rgb(255, 255, 255);
+}
+form{
+  text-align: center;
+}
+
+.addTask_form{
+  padding: 5px;
+}
+.addTask_form input{
+  display: inline-block;
+}
+.addTask_form button{
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 2px;
+  color: #fff;
+  background-color: rgb(46, 95, 180);
+  transition: .15s ease;
+  text-transform: lowercase;
+}
+
+
+.addTask_form button:hover{
+  background-color: #2a5298;
+  color: #fff;
+}
+
+

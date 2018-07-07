@@ -1,0 +1,16 @@
+.grid-container
+  opacity: 0
+  transition: .2s ease
+
+.lists-grid
+  display: grid
+  grid-template-columns: minmax(50%, auto) minmax(50%, auto) 
+  align-items: flex-start
+
+@media only screen and (min-width: 560px)
+  .lists-grid 
+    grid-template-columns: minmax(25%, auto) minmax(25%, auto)
+
+@media only screen and (min-width: 960px)
+  .lists-grid 
+    grid-template-columns: minmax(25%, auto) minmax(25%, auto) minmax(25%, auto) minmax(25%, auto)  

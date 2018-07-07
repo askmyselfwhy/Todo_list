@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+ul, ol {
+  padding-left: 10px; }
+  ul li, ol li {
+    transition: 0.2s ease; }
+    ul li:hover, ol li:hover {
+      margin-left: 0.5rem; }
+
+a {
+  color: #000;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: 0.2s ease;
+  border-radius: 2px; }
+  a:hover {
+    background-color: #000;
+    color: #fff; }
+
+.App {
+  min-height: 100vh;
+  background-color: white; }
+
+.ui.segment {
+  border-radius: none !important; }
+
+.clearfix {
+  clear: both;
+  display: table;
+  overflow: hidden; }
+
+.list-grid {
+  display: grid;
+  grid-template-columns: minmax(25%, auto) minmax(25%, auto) minmax(25%, auto) minmax(25%, auto);
+  align-items: flex-start;
+  opacity: 0;
+  transition: 0.35s ease; }
+  .list-grid a {
+    padding: 0px; }
+    .list-grid a:hover {
+      background-color: transparent; }
+  .list-grid__item, .list-grid__item--add {
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: #eee;
+    box-shadow: 0 0 1px 0 #000;
+    margin: 5px 5px;
+    padding: 0px 10px;
+    color: #000 !important;
+    word-wrap: break-word;
+    word-break: break-all;
+    transition: 0.2s ease; }
+    .list-grid__item:hover, .list-grid__item--add:hover {
+      background: #ccc;
+      border: 1px solid #0064a0; }
+    .list-grid__item__remove-button {
+      display: inline-block; }
+      .list-grid__item__remove-button:before {
+        content: "X";
+        padding: 10px 15px;
+        margin: 0 auto;
+        transition: 0.2s ease;
+        float: right; }
+      .list-grid__item__remove-button:hover:before {
+        background-color: #000;
+        color: #fff; }
+    .list-grid__item__title {
+      text-align: center;
+      padding: 10px;
+      border: 1px dashed #000;
+      text-transform: uppercase; }
+    .list-grid__item--add {
+      display: flex;
+      justify-content: center;
+      line-height: normal;
+      color: #000; }
+      .list-grid__item--add:after {
+        content: "+";
+        font-size: 250px; }
+    .list-grid__item__tasks__item {
+      text-align: left;
+      margin: 0px;
+      padding: 5px; }
+
+.list {
+  transition: 0.2s ease;
+  opacity: 0; }
+  .list__panel-container {
+    margin: 0 auto;
+    max-width: 960px;
+    text-align: right; }
+  .list__title {
+    text-align: center; }
+    .list__title-container {
+      display: flex;
+      justify-content: center;
+      margin: 10px; }
+      .list__title-container__title {
+        margin-right: 10px; }
+        .list__title-container__title:hover {
+          border-bottom: 2px solid green;
+          transfrom: rotate(40deg); }
+  .list__delete-button {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    background-color: #a73030;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    transition: 0.2s ease; }
+    .list__delete-button:hover {
+      background-color: #8b2828; }
+  .list__title input {
+    display: block;
+    font-size: 24px !important;
+    border: 1px solid transparent !important;
+    border-radius: 0px !important;
+    padding: 2px 10px !important;
+    transition: 0.2s ease;
+    font-weight: bold; }
+    .list__title input:hover, .list__title input:focus {
+      border-bottom: 1px solid #a73030 !important; }
+
+.list__task, .list__task--is-checked {
+  cursor: pointer;
+  margin: 10px;
+  padding: 100px;
+  box-sizing: border-box;
+  box-shadow: 0 0 1px 0px #000;
+  border-radius: 2px;
+  transition: background-color 0.25s ease; }
+  .list__task:hover, .list__task--is-checked:hover {
+    background-color: #b8b8b8; }
+  .list__task__controls {
+    display: flex;
+    justify-content: flex-end; }
+  .list__task__text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+  .list__task__checkbox {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: 1px solid rgba(136, 136, 136, 0.397);
+    border-radius: 5px;
+    margin-right: 5px; }
+  .list__task--is-editable {
+    border: 1px solid #7c2424;
+    box-shadow: none; }
+  .list__task--is-checked {
+    background-color: #a73030;
+    color: #fff; }
+    .list__task--is-checked:hover {
+      background-color: #7c2424;
+      color: #fff; }
+    .list__task--is-checked .list__task__checkbox {
+      background-image: url("../images/check.svg");
+      border: 1px solid #f0efef;
+      background-repeat: no-repeat;
+      background-size: initial; }
+    .list__task--is-checked .list__task__caption {
+      text-decoration: line-through; }
+  .list__task--add {
+    margin: 10px; }
+    .list__task--add__button {
+      width: 100%;
+      display: block;
+      color: #fff;
+      background: #383838;
+      line-height: normal;
+      padding: 0px;
+      font-size: 100px; }
+      .list__task--add__button:hover {
+        background-color: #1b1b1b !important; }
+  .list__task__button {
+    font-size: 1.2em;
+    cursor: pointer;
+    border: 1px solid rgba(27, 27, 27, 0.2) !important;
+    background-color: transparent;
+    padding: 0.5em;
+    transition: 0.2s ease;
+    margin: 0 10px; }
+    .list__task__button:hover {
+      background-color: #a73030 !important;
+      color: #fff !important; }
+
+/* FADE */
+.fade-enter {
+  opacity: 0.01; }
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in; }
+
+.fade-exit {
+  opacity: 1; }
+
+.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in; }
+
+/* ZOOM */
+.zoom-enter {
+  transform: scale(0); }
+
+.zoom-enter-active {
+  transform: scale(1);
+  transition: transform 500ms ease-in; }
+
+.zoom-exit {
+  transform: scale(1); }
+
+.zoom-exit-active {
+  transform: scale(0);
+  transition: transform 500ms ease-in; }
+
+/* COLLAPSE */
+.collapse-enter {
+  transform: scaleY(0);
+  transform-origin: top; }
+
+.collapse-enter-active {
+  transform: scaleY(1);
+  transition: transform 500ms ease; }
+
+.collapse-exit {
+  transform-origin: top;
+  transform: scaleY(1); }
+
+.collapse-exit-active {
+  transform: scaleY(0);
+  transition: transform 500ms ease; }
+
+/*# sourceMappingURL=index.css.map */
