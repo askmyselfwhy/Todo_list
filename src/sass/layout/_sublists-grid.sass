@@ -9,6 +9,10 @@
 .sublist-controls
   padding: 25px
 
+.sublist-container
+  padding-top: 25px
+  box-shadow: 0 0 2px 1px #eee
+
 
 
 @media only screen and (max-width: 560px)
@@ -18,3 +22,9 @@
 
   .sublist-controls
     padding: 5px
+    button
+      padding: 5px !important
+
+@media only screen and (max-width: 946px)
+  .sublist-container:not(:first-child)
+    margin-top: 50px

@@ -18,9 +18,9 @@ class AddTaskForm extends Component {
             type="date" value={dateformat(endDate,'yyyy-mm-dd')} 
             onChange={handleChanges} />
           <Label>Task description</Label>
-          <TextArea autoHeight placeholder='Enter task description here'
+          <TextArea placeholder='Enter task description here'
             id='form-input-control-description' name='text' 
-            icon='edit' value={text} 
+            value={text} 
             onChange={handleChanges}/>
           <Button color='green' onClick={e => onAddTask(e)}>Add task</Button>
         </Container>

@@ -54,6 +54,9 @@ class ListGrid extends Component {
     this.lists = arrayMove(this.lists, oldIndex, newIndex);
     this.props.reorderLists(this.lists);
   };
+  onSortStart = ({oldIndex, newIndex}, e) => {
+    e.preventDefault();
+  };
 
   render(){
     let {lists, addList, deleteList} = this.props;
@@ -61,7 +64,9 @@ class ListGrid extends Component {
     return (
       <div id="grid" className="grid-container">
         <SortableList distance={2} axis='xy' items={lists}
-          deleteList={deleteList} addList={addList} onSortEnd={this.onSortEnd}/>
+          deleteList={deleteList} addList={addList} 
+          onSortStart={this.onSortStart}
+          onSortEnd={this.onSortEnd}/>
       </div>
     )
   }

@@ -50,6 +50,7 @@
 /* COLLAPSE1 */
 .collapse1-enter
   max-height: 0
+  overflow: hidden
 
 .collapse1-enter-active 
   max-height: 300px
@@ -57,9 +58,8 @@
 
 .collapse1-exit 
   max-height: 300px
-  transform: scaleY(1)
 
 .collapse1-exit-active 
-  max-height: 0
+  max-height: 0 !important
   overflow: hidden
   transition: 500ms ease

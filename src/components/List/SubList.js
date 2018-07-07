@@ -37,7 +37,7 @@ const SortableList = SortableContainer(({items, title, collectionNumber, checkTa
     { menuItem: 'Sort descending', render: () => pane2 },
   ]
   return (
-    <div>
+    <div className='sublist-container'>
       <Container fluid textAlign='center'>
         <h1>{title}</h1>
       </Container>

@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
-import { Redirect } from 'react-router'
-import { Container, Button, Input } from 'semantic-ui-react'
+import React, {Component} from 'react';
+import { Redirect } from 'react-router';
+import { Container, Button, Input } from 'semantic-ui-react';
+import { Collapse } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { arrayMove } from 'react-sortable-hoc';
 import v4 from 'uuid';
@@ -158,12 +159,11 @@ class List extends Component {
           :
           <Button icon='hide' content='Add task panel' onClick={this.toggleAddTaskPanel}/>
           }
-          <CSSTransition key={list.id} timeout={500} unmountOnExit
-            in={this.state.showAddTaskPanel} classNames="collapse">
+          <Collapse isOpen={this.state.showAddTaskPanel}>
             <AddTaskForm endDate={this.state.endDate} text={this.state.text}
-              handleChanges={this.handleChanges} onAddTask={this.onAddTask}
-              changeRating={this.changeRating}/>
-          </CSSTransition>
+                handleChanges={this.handleChanges} onAddTask={this.onAddTask}
+                changeRating={this.changeRating}/>
+          </Collapse>
         </Container>
 
         <div className="sublists-grid">
