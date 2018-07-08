@@ -19,10 +19,11 @@ class List extends Component {
   constructor(props){
     super(props);
     this.state = {
-      id: this.props.match.params.id,
+      id: (props.list) ? props.list.id : undefined,
       showAddTaskPanel: false,
       text: '',
-      endDate: new Date()
+      endDate: new Date(),
+      priority: 0
     };
     this.subLists = [];
     for(let i = 0; i < config.SublistsTitles.length; i++) {
@@ -95,11 +96,18 @@ class List extends Component {
   componentDidUpdate(){
     this.saveToStorage();
   }
+  shouldComponentUpdate(nextProps, nextState){
+    if(this.props.idOfCurrentList !== nextProps.idOfCurrentList)
+      return false
+    return true
+  }
   componentDidMount(){
     let node = document.getElementById(this.state.id);
-    setTimeout(() => {
-      node.style.opacity = "1"
-      }, config.ANIMATION_DELAY)
+    if(this.state.id){
+      setTimeout(() => {
+        node.style.opacity = "1"
+        }, config.ANIMATION_DELAY)
+    }
   }
   onAddTask = (e) => {
     e.preventDefault();
@@ -112,7 +120,7 @@ class List extends Component {
       startDate: sdate,
       endDate: edate,
       isChecked: false,
-      priority: (this.state.rating) ? this.state.rating : 0,
+      priority: (this.state.priority) ? this.state.priority : 0,
     })
     this.setState({
       text: '',
@@ -128,16 +136,14 @@ class List extends Component {
   }
   changeRating = (e, {rating}) => {
     this.setState({
-      rating: rating
+      priority: rating
     })
   }
   render(){
-    let {id} = this.state;
-    let {lists, deleteAllCheckedTasks,checkTask,deleteTask} = this.props;
-    let list = [...lists].find((item) => (item.id === id) ? true : false)
+    let {deleteAllCheckedTasks, checkTask, deleteTask} = this.props;
+    let list = this.props.list
     if (!list) return <Redirect to="../*"></Redirect>
     let tasks = list.tasks
-    this.tasks = tasks;
     
     this.subLists[0].tasks = getTodayTasks(tasks);
     this.subLists[1].tasks = getTomorrowTasks(tasks);
@@ -150,7 +156,7 @@ class List extends Component {
         <NavMenu deleteAllCheckedTasks={deleteAllCheckedTasks}
           toggleSortAsc={this.toggleSortAsc}>
         </NavMenu>
-        <Container textAlign="center">
+        <Container as='header' textAlign="center">
           <Input className="list__title" onChange={this.handleChange} value={list.title}/>
         </Container>
         <Container>
@@ -166,7 +172,7 @@ class List extends Component {
           </Collapse>
         </Container>
 
-        <div className="sublists-grid">
+        <section className="sublists-grid">
           <TransitionGroup component={null}>
           {this.subLists.map((sublist, index) => 
               (sublist.tasks.length > 0) ?
@@ -182,7 +188,7 @@ class List extends Component {
             )
           }
           </TransitionGroup> 
-        </div>
+        </section>
       </div>
     )
   }

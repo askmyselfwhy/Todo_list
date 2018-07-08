@@ -11,7 +11,7 @@ const SortableItem = SortableElement(({listData, deleteList}) =>
  
 const SortableList = SortableContainer(({items, deleteList, addList}) => {
   return (
-    <div className="lists-grid">
+    <div className="grid-container">
       <div 
         className="lists-grid__item--add"          
         onClick={e=>{e.preventDefault();addList({id: v4(), tasks: [] ,title: 'New List'})}}>
@@ -38,7 +38,7 @@ class ListGrid extends Component {
     localStorage.setItem('my_todoList',obj)
   }
   componentDidMount(){
-    let node = document.getElementById("grid");
+    let node = document.getElementsByClassName('grid-container')[0];
     setTimeout(()=> {
       node.style.opacity = "1"
       }, config.ANIMATION_DELAY)
@@ -62,12 +62,10 @@ class ListGrid extends Component {
     let {lists, addList, deleteList} = this.props;
     this.lists = lists;
     return (
-      <div id="grid" className="grid-container">
-        <SortableList distance={2} axis='xy' items={lists}
-          deleteList={deleteList} addList={addList} 
-          onSortStart={this.onSortStart}
-          onSortEnd={this.onSortEnd}/>
-      </div>
+      <SortableList distance={2} axis='xy' items={lists}
+        deleteList={deleteList} addList={addList} 
+        onSortStart={this.onSortStart}
+        onSortEnd={this.onSortEnd}/>
     )
   }
 }

@@ -37,24 +37,24 @@ const SortableList = SortableContainer(({items, title, collectionNumber, checkTa
     { menuItem: 'Sort descending', render: () => pane2 },
   ]
   return (
-    <div className='sublist-container'>
-      <Container fluid textAlign='center'>
+    <section className='sublist-container'>
+      <Container as='header' fluid textAlign='center'>
         <h1>{title}</h1>
       </Container>
-      <Container fluid textAlign='right' className='sublist-controls'>
+      <Container as='nav' fluid textAlign='right' className='sublist-controls'>
         <Button.Group widths='4'>
           <Popup inverted flowing
             trigger={<Button compact icon><Icon name='sort' />Sort by</Button>}
             on='click' hideOnScroll>
             <Tab menu={{fluid: true, secondary: true, inverted: true}} panes={panes}/>
           </Popup>
-          <Button compact content='Select all'   onClick={e => selectTasks(true)}/>
-          <Button compact content='Unselect all' onClick={e => selectTasks(false)}/>
+          <Button compact content='Select all'     onClick={e => selectTasks(true)}/>
+          <Button compact content='Unselect all'   onClick={e => selectTasks(false)}/>
           <Button compact content='Delete checked' onClick={e => deleteTasks()}
             color='red'/>
         </Button.Group>
       </Container>
-      <TransitionGroup>
+      <TransitionGroup component='section'>
         {items.map((item, index) => (
           <CSSTransition key={item.id} timeout={500} classNames="fade">
             <SortableItem key={item.id+index} collection={collectionNumber} 
@@ -62,7 +62,7 @@ const SortableList = SortableContainer(({items, title, collectionNumber, checkTa
           </CSSTransition>
         ))}
       </TransitionGroup> 
-    </div>
+    </section>
   )
 });
 
@@ -70,11 +70,7 @@ const SortableList = SortableContainer(({items, title, collectionNumber, checkTa
 class SubList extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      isPriorityAscOrder: true,
-      isDateAscOrder: true,
-    }
-    this.sortTasks = this.sortTasks.bind(this);
+    this.sortTasks   = this.sortTasks.bind(this);
     this.selectTasks = this.selectTasks.bind(this);
     this.deleteTasks = this.deleteTasks.bind(this);
   }
@@ -91,9 +87,9 @@ class SubList extends Component {
     let {subList, index, onSortStart, onSortEnd, checkTask } = this.props;
     return (
       <SortableList collectionNumber={index}
-        lock='y' distance={2} items={subList.tasks} title={subList.title}
-        onSortEnd={onSortEnd} checkTask={checkTask}
-        onSortStart={onSortStart}
+        lock='y' distance={4} items={subList.tasks} title={subList.title}
+        onSortEnd={onSortEnd} onSortStart={onSortStart}
+        checkTask={checkTask}
         deleteTasks={this.deleteTasks} sortTasks={this.sortTasks} selectTasks={this.selectTasks}/>
     )
   }

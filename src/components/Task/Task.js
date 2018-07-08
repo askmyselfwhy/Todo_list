@@ -1,5 +1,5 @@
 import React from 'react';
-import { Rating, Button, Icon, Container } from 'semantic-ui-react'
+import { Rating, Button, Icon } from 'semantic-ui-react'
 import {getFormatedDate} from '../../dateTime';
 
 const Task = (props) => {
@@ -25,13 +25,14 @@ const Task = (props) => {
           <Button compact size='mini' color='red'  icon='delete' 
             onClick={e => deleteTask(e)}/>
         </div>
+        
       </div>
-      <Container fluid className="list__task__dates">
+      <div className="list__task__dates">
         <div className="list__item__time-exp">
           The task should be completed by: 
-          <span>{getFormatedDate(endDate)}</span>
+          <time>{getFormatedDate(endDate)}</time>
         </div>
-      </Container>
+      </div>
     </div>
   )
 }

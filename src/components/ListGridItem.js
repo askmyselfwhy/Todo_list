@@ -5,10 +5,9 @@ import { Button, Container } from 'semantic-ui-react'
 class ListGridItem extends Component {
   render(){
     let {listData, deleteList} = this.props;
-
     return(
       <div className="lists-grid__item">
-        <Link to={"/list/"+listData.id} draggable="false">
+        <Link to={"/list/"+listData.id}>
           <Container textAlign='right'>
             <Button icon='delete' color='red' 
               onClick={e=>{e.preventDefault();deleteList(listData.id)}}/> 

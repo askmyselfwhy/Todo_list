@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, Form, Container, Rating } from 'semantic-ui-react'
+import { Button, Form, Container, Rating, Label } from 'semantic-ui-react'
 import dateformat from 'dateformat'
 
-const EditableTask = ({editTask, deleteTask, text, endDate, handleChange}) => {
+const EditableTask = ({editTask, deleteTask, caption, endDate, priority, handleChange,handleOnRate}) => {
   return (
       <div>
         <Container fluid textAlign="right">
@@ -12,10 +12,14 @@ const EditableTask = ({editTask, deleteTask, text, endDate, handleChange}) => {
            onClick={e => deleteTask(e)}/>
         </Container>
         <Form>
-          <Rating icon='star' clearable maxRating={10}/>
+          <Form.Field>
+            <label>Change priority of task here</label>
+            <Rating icon='star' clearable defaultRating={priority} maxRating={10} 
+            onRate={handleOnRate}/>
+          </Form.Field>
           <Form.TextArea autoHeight id='form-input-control-description' 
             label='Task description' placeholder='Enter task description here' 
-            name='text' value={text} onChange={handleChange}/> 
+            name='caption' value={caption} onChange={handleChange}/> 
           <Form.Input id='form-input-control-time-to-finish' 
             label='Time to finish the task' type="date"
             placeholder="Enter finish time for the task here" name='endDate' 

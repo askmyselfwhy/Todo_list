@@ -2,8 +2,10 @@ import {connect} from 'react-redux'
 import List from '../components/List/List'
 import {onDeleteTask, onCheckTask, onChangeTasksArray,onChangeList,onDeleteAllCheckedTasks, onAddTask, onEditList} from '../actions/'
 
-const mapStateToProps = (state) => ({
-  lists: state.lists.lists
+const mapStateToProps = (state, ownProps) => ({
+  lists: state.lists.lists,
+  idOfCurrentList: state.lists.idOfCurrentList,
+  list: state.lists.lists.find((list) => (list.id === ownProps.match.params.id))
 })
 
 const mapDispatchToProps = (dispatch) => ({

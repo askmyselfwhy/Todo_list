@@ -19,8 +19,8 @@ const addNewList = (state, listData) => {
 }
 const changeList = (state, newListId) => {
   return {
+    ...state,
     idOfCurrentList: newListId,
-    lists: state.lists
   }
 }
 const editList = (state, title) => {
@@ -48,7 +48,7 @@ const reorderLists = (state, lists) => {
   }
 }
 const getListIndexById = (lists, listId) => {
-  return lists.findIndex((list) => (listId === list.id) ? true : false)
+  return lists.findIndex((list) => (listId === list.id))
 }
 function lists(state=initialState, event){
   switch(event.type){

@@ -9,7 +9,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <main className="App">
         <Router>
           <Switch>
             <Route exact path="/"   component={ListGrid}/>
@@ -17,7 +17,7 @@ class App extends Component {
             <Route exact path="*"   component={ErrorPage}/>
           </Switch>
         </Router>
-      </div>
+      </main>
     );
   }
 }
