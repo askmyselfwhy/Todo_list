@@ -3,12 +3,9 @@
     cursor: pointer
     padding: 15px 20px
     box-sizing: border-box
-    background-color: #fff
+    background-color: $cTask
     border-left: 2px solid rgb(124, 36, 36)
     border-right: 2px solid rgb(124, 36, 36)
-    &:hover
-      background-color: rgb(200,200,200)
-      border-left: 2px solid green
 
     &-controls
       text-align: right
@@ -19,28 +16,4 @@
     &__dates
       margin: 0px
     &__time-exp
-    &__time-start 
-
-    &--is-editable
-      border: 1px solid rgb(124, 36, 36)
-      box-shadow: none
-    &--is-checked
-      @extend .list__task
-      background-color: rgb(167, 48, 48)
-      color: #fff
-      
-      &:hover
-        background-color: rgb(124, 36, 36)
-        color: #fff
-
-      .list__task__caption
-        word-wrap: wrap
-        word-break: break-all
-        text-decoration: line-through
-
-    
-
-@media only screen and (max-width: 560px)
-  .list
-    &__task
-      padding: 5px 10px
+    &__time-start

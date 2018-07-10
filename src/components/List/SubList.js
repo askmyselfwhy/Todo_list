@@ -6,11 +6,11 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc'
 import TaskContainer from '../../containers/TaskContainer'
 
 const SortableItem = SortableElement(({taskData}) =>
-  <TaskContainer taskData={taskData}/> 
+  <TaskContainer taskData={taskData}/>
 );
 
 const SortableList = SortableContainer(({items, title, collectionNumber, checkTask, deleteTasks, sortTasks, selectTasks}) => {
-  let pane1 =     
+  let pane1 =
   <Tab.Pane inverted>
     <Button as='div' labelPosition='right' onClick={e => sortTasks('date', true)}>
       <Button icon='calendar alternate outline'/>
@@ -21,7 +21,7 @@ const SortableList = SortableContainer(({items, title, collectionNumber, checkTa
       <Label as='a' basic >Sort by priority</Label>
     </Button>
   </Tab.Pane>;
-  let pane2 = 
+  let pane2 =
   <Tab.Pane inverted>
     <Button as='div' labelPosition='right' onClick={e => sortTasks('date', false)}>
       <Button icon='calendar alternate outline'/>
@@ -57,11 +57,11 @@ const SortableList = SortableContainer(({items, title, collectionNumber, checkTa
       <TransitionGroup component='section'>
         {items.map((item, index) => (
           <CSSTransition key={item.id} timeout={500} classNames="fade">
-            <SortableItem key={item.id+index} collection={collectionNumber} 
+            <SortableItem key={item.id+index} collection={collectionNumber}
               index={index} taskData={item}/>
           </CSSTransition>
         ))}
-      </TransitionGroup> 
+      </TransitionGroup>
     </section>
   )
 });

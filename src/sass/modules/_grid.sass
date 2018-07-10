@@ -1,19 +1,10 @@
-@import '../utils/_vars.sass'
-
 .lists-grid
-  a
-    padding: 0px
-    &:hover
-      background-color: transparent
-
-
   &__item
     cursor: pointer
     border: 1px solid transparent
     background: $cList
     box-shadow: 0 0 1px 0 #000
     margin: 5px 5px
-    color: #000 !important
     word-wrap: break-word
     word-break: break-all
     transition: .2s ease
@@ -24,6 +15,7 @@
       color: #000
       &:hover
         background-color: transparent
+        text-decoration: none
 
 
     &:hover
@@ -34,7 +26,8 @@
       text-align: center
       padding: 25px
       text-transform: uppercase
-      
+      color: $cListTitle
+
     &--add
       @extend .lists-grid__item
       display: flex
@@ -54,9 +47,9 @@
         padding: 5px
 
 
-  
 
 
 
 
-  
+
+

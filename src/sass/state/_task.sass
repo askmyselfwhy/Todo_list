@@ -1,0 +1,29 @@
+.list
+  &__task
+    &:hover
+      background-color: $cTaskHovered
+      border-left: 2px solid teal
+      border-right: 2px solid teal
+
+    &--is-editable
+      box-shadow: none
+
+    &--is-checked
+      @extend .list__task
+      background-color: $cTaskChecked
+      color: #fff
+
+      &:hover
+        background-color: $cTaskCheckedHovered
+        color: #fff
+
+      .list__task__caption
+        word-wrap: wrap
+        word-break: break-all
+        text-decoration: line-through
+
+
+@media only screen and (max-width: 560px)
+  .list
+    &__task
+      padding: 5px 10px
