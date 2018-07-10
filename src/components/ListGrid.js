@@ -2,20 +2,19 @@ import React, {Component} from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import ListGridItem from './ListGridItem'
+import HomePageNav from './HomePageNav'
+import AddListModal from './AddListModal'
 import v4 from 'uuid'
 import config from '../config';
+import { Modal, Button, Input } from 'semantic-ui-react'
 
 const SortableItem = SortableElement(({listData, deleteList}) =>
   <ListGridItem listData={listData} deleteList={deleteList}/>
 );
  
-const SortableList = SortableContainer(({items, deleteList, addList}) => {
+const SortableList = SortableContainer(({items, deleteList, toggleModal}) => {
   return (
     <div className="grid-container">
-      <div 
-        className="lists-grid__item--add"          
-        onClick={e=>{e.preventDefault();addList({id: v4(), tasks: [] ,title: 'New List'})}}>
-      </div> 
       <TransitionGroup component={null}>
         {items.map((item, index) => (
           <CSSTransition key={item.id} timeout={500} classNames="zoom">
@@ -25,15 +24,22 @@ const SortableList = SortableContainer(({items, deleteList, addList}) => {
           </CSSTransition>
         ))}
       </TransitionGroup>
+      <div 
+        className="lists-grid__item--add"          
+        onClick={e => toggleModal()}>
+      </div> 
     </div>
   )
 });
 
 class ListGrid extends Component {
+  state = {
+    openAddListModal: false
+  }
   saveToStorage(){
     let obj = JSON.stringify({
       idOfCurrentList: null,
-      lists: this.props.lists
+      lists: this.props.lists,
     });
     localStorage.setItem('my_todoList',obj)
   }
@@ -49,7 +55,11 @@ class ListGrid extends Component {
   componentDidUpdate(){
     this.saveToStorage();
   }
-
+  toggleModal = () => {
+    this.setState({
+      openAddListModal: !this.state.openAddListModal
+    })
+  }
   onSortEnd = ({oldIndex, newIndex}) => {
     this.lists = arrayMove(this.lists, oldIndex, newIndex);
     this.props.reorderLists(this.lists);
@@ -62,10 +72,18 @@ class ListGrid extends Component {
     let {lists, addList, deleteList} = this.props;
     this.lists = lists;
     return (
-      <SortableList distance={2} axis='xy' items={lists}
-        deleteList={deleteList} addList={addList} 
-        onSortStart={this.onSortStart}
-        onSortEnd={this.onSortEnd}/>
+      <div>
+        <HomePageNav toggleModal={this.toggleModal}></HomePageNav>
+        <AddListModal 
+          isOpen={this.state.openAddListModal}
+          addList={addList} 
+          toggleModal={this.toggleModal}/>
+        <SortableList distance={2} axis='xy' items={lists}
+          deleteList={deleteList} addList={addList} 
+          onSortStart={this.onSortStart}
+          onSortEnd={this.onSortEnd}
+          toggleModal={this.toggleModal}/>
+      </div>
     )
   }
 }

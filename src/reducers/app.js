@@ -54,6 +54,7 @@ function lists(state=initialState, event){
   switch(event.type){
      /* LISTS */
     case action.ADD_LIST:
+      console.log(event.payload + " " + " YEAAAH")
       return addNewList(state, event.payload);
     case action.DELETE_LIST:
       return deleteList(state, event.payload);

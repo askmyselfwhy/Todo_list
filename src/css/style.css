@@ -29,6 +29,9 @@ a {
   min-height: 100vh;
   background-color: white; }
 
+.ui.menu {
+  border-radius: 0px; }
+
 .grid-container {
   display: grid;
   grid-template-columns: minmax(50%, auto) minmax(50%, auto);
@@ -36,9 +39,6 @@ a {
   opacity: 0;
   transition: 0.2s ease; }
 
-@media only screen and (min-width: 560px) {
-  .grid-container {
-    grid-template-columns: minmax(25%, auto) minmax(25%, auto); } }
 @media only screen and (min-width: 960px) {
   .grid-container {
     grid-template-columns: minmax(25%, auto) minmax(25%, auto) minmax(25%, auto) minmax(25%, auto); } }
@@ -71,7 +71,7 @@ a {
     margin-top: 50px; } }
 .task-form__grid {
   display: grid !important;
-  grid-template: auto auto auto auto/minmax(25%, 35%) minmax(25%, 35%);
+  grid-template: auto auto auto auto/minmax(35%, 50%) minmax(35%, 50%);
   align-items: center;
   justify-content: center;
   grid-gap: 10px; }

@@ -135,9 +135,7 @@ class List extends Component {
     this.props.editList(value)
   }
   changeRating = (e, {rating}) => {
-    this.setState({
-      priority: rating
-    })
+    this.setState({priority: rating})
   }
   render(){
     let {deleteAllCheckedTasks, checkTask, deleteTask} = this.props;
@@ -150,27 +148,35 @@ class List extends Component {
     this.subLists[2].tasks = getWeekTasks(tasks);
     this.subLists[3].tasks = getOtherTasks(tasks);
     this.subLists[4].tasks = getOutdatedTasks(tasks);
-
     return(
       <div className="list" id={list.id}>
-        <NavMenu deleteAllCheckedTasks={deleteAllCheckedTasks}
+        <NavMenu 
+          handleChanges={this.handleChanges} 
+          onAddTask={this.onAddTask}
+          endDate={this.state.endDate} 
+          priority={this.state.priority} 
+          text={this.state.text}
+          changeRating={this.changeRating}
+          deleteAllCheckedTasks={deleteAllCheckedTasks}
           toggleSortAsc={this.toggleSortAsc}>
         </NavMenu>
         <Container as='header' textAlign="center">
           <Input className="list__title" onChange={this.handleChange} value={list.title}/>
         </Container>
-        <Container>
+        {/* <Container>
           {(this.state.showAddTaskPanel) ?
           <Button icon='unhide' content='Add task panel' onClick={this.toggleAddTaskPanel}/>
           :
           <Button icon='hide' content='Add task panel' onClick={this.toggleAddTaskPanel}/>
           }
           <Collapse isOpen={this.state.showAddTaskPanel}>
-            <AddTaskForm endDate={this.state.endDate} text={this.state.text}
-                handleChanges={this.handleChanges} onAddTask={this.onAddTask}
-                changeRating={this.changeRating}/>
+            <AddTaskForm handleChanges={this.handleChanges} onAddTask={this.onAddTask}
+            endDate={this.state.endDate} 
+            priority={this.state.priority} 
+            text={this.state.text}
+            changeRating={this.changeRating}/>
           </Collapse>
-        </Container>
+        </Container> */}
 
         <section className="sublists-grid">
           <TransitionGroup component={null}>
