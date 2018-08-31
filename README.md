@@ -1,2 +1,1 @@
-Le classique todo list on React + Redux (WIP).
-Testing server https://mytest-todo-list.herokuapp.com/
+Classical todo list app on React + Redux (WIP).
